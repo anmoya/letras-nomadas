@@ -9,7 +9,8 @@ var UIController = (function () {
         inputCiudad : '.add__ciudad',
         inputPaginas : '.add__paginas',
         inputAnio : '.add__anio',
-        inputDescripcion : '.add__descripcion'
+        inputDescripcion : '.add__descripcion',
+        inputIngresar: '.add__button'
     };
     
     return {
@@ -22,11 +23,49 @@ var UIController = (function () {
                 pais : document.querySelector(DOMstrings.inputPais).value,
                 ciudad : document.querySelector(DOMstrings.inputCiudad).value,
                 paginas : document.querySelector(DOMstrings.inputPaginas).value,
-                anio : document.querySelector(DOMstrings.inputAnio).value
+                anio : document.querySelector(DOMstrings.inputAnio).value,
+                descripcion: document.querySelector(DOMstrings.inputDescripcion)
                 
             };
         },
+        getDOMstrings : function () {
+            return DOMstrings;
+        }
 
     }
 
 })();
+
+
+var controller = (function (UICtrl){
+    var setupEventListeners = function() {
+        var DOM = UICtrl.getDOMstrings();
+        
+        document.querySelector(DOM.inputIngresar).addEventListener('click', function(){
+            UICtrl.getInput();
+        });
+    }
+    
+    return {
+        init : function() {
+            console.log('App corriendo');
+            setupEventListeners()
+        }
+    }
+})(UIController);
+
+controller.init();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
